@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Gira98/movie/static/css/main.4e26d85a.css",
-    "main.js": "/Gira98/movie/static/js/main.d749c4f4.js",
-    "static/media/Inter-Italic-VariableFont_opsz,wght.ttf": "/Gira98/movie/static/media/Inter-Italic-VariableFont_opsz,wght.831252f8ba7e1b5b2432.ttf",
-    "static/media/Inter-VariableFont_opsz,wght.ttf": "/Gira98/movie/static/media/Inter-VariableFont_opsz,wght.e05c5f3d1fa6a3893d84.ttf",
-    "index.html": "/Gira98/movie/index.html",
-    "main.4e26d85a.css.map": "/Gira98/movie/static/css/main.4e26d85a.css.map",
-    "main.d749c4f4.js.map": "/Gira98/movie/static/js/main.d749c4f4.js.map"
+    "main.css": "/movie/static/css/main.e1115519.css",
+    "main.js": "/movie/static/js/main.d749c4f4.js",
+    "static/media/Inter-Italic-VariableFont_opsz,wght.ttf": "/movie/static/media/Inter-Italic-VariableFont_opsz,wght.831252f8ba7e1b5b2432.ttf",
+    "static/media/Inter-VariableFont_opsz,wght.ttf": "/movie/static/media/Inter-VariableFont_opsz,wght.e05c5f3d1fa6a3893d84.ttf",
+    "index.html": "/movie/index.html",
+    "main.e1115519.css.map": "/movie/static/css/main.e1115519.css.map",
+    "main.d749c4f4.js.map": "/movie/static/js/main.d749c4f4.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e26d85a.css",
+    "static/css/main.e1115519.css",
     "static/js/main.d749c4f4.js"
   ]
 }
