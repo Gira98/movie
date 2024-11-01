@@ -1,3 +1,3 @@
-import MovieApp from './todo'
+import MovieApp from './movie-app'
 
 export default MovieApp
