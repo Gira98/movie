@@ -9,7 +9,7 @@
 	margin-right: 0;
 }
 
-.container div:nth-child(-n+2) {
+.container li:nth-child(-n+2) {
 	margin-top: 23px;
 }
 
