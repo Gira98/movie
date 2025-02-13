@@ -5,6 +5,7 @@ import GenresContext from "../../context";
 import { useContext } from "react";
 import { format } from "date-fns";
 import MovieService from "../../services/movie-service";
+import picNotAvailable from "/Users/angirabartunova/Desktop/movie-app/src/components/card/not-available.png";
 
 export default function Card({ info, loading, sessionId, activeTab }) {
   if (!info) {
@@ -96,9 +97,15 @@ const MovieView = ({ info, sessionId, activeTab }) => {
     color = "rating-green";
   }
 
+  let pic = `${imgBase}${posterPath}`;
+
+  if (!posterPath) {
+    pic = picNotAvailable;
+  }
+
   return (
     <>
-      <img src={`${imgBase}${posterPath}`} alt="poster"></img>
+      <img src={pic} alt="poster"></img>
       <section className="description">
         <div className={`rating ${color}`}>{voteAverage.toFixed(1)}</div>
         <h1>{cutText(title, 4)}</h1>
