@@ -105,7 +105,7 @@ const MovieView = ({ info, sessionId, activeTab }) => {
 
   return (
     <>
-      <img src={pic} alt="poster"></img>
+      <img src={pic} alt={`${title} poster`} className="poster"></img>
       <section className="description">
         <div className={`rating ${color}`}>{voteAverage.toFixed(1)}</div>
         <h1>{cutText(title, 4)}</h1>

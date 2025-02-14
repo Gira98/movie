@@ -47,3 +47,13 @@
 .ant-tabs .ant-tabs-content-holder {
 	width: 100%;
 }
+
+@media (max-width: 1020px) {
+	.list {
+			justify-content: space-evenly;
+	}
+}
+
+@media (max-width: 600px) {
+	
+}
