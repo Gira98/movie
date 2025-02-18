@@ -20,9 +20,9 @@ export default function MovieApp() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(1);
-
   const [page, setPage] = useState(1);
   const [sessionId, setSessionId] = useState(null);
+  const [ratingSearch, setRatingSearch] = useState({})
 
   const propsSearchTab = {
     error,
@@ -30,6 +30,8 @@ export default function MovieApp() {
     totalPages,
     sessionId,
     page,
+    ratingSearch,
+    setRatingSearch
   };
 
   const getMoviesData = async () => {
@@ -41,9 +43,6 @@ export default function MovieApp() {
       setError(null);
 
       const data = await res.getMovies(searchQuery, page, sessionId);
-
-      const genres = await res.getGenres();
-      setGenresList(genres);
 
       if (!data.total_pages) {
         setError(<Alert message="No movies found" type="error" />);
@@ -67,10 +66,16 @@ export default function MovieApp() {
       }
     };
     createSession();
+
+    const getGenres = async () => {
+      const genres = await res.getGenres();
+      setGenresList(genres);
+    };
+    getGenres();
   }, []);
-  
+
   useEffect(() => {
-    if (!sessionId) return
+    if (!sessionId) return;
 
     const debounced = debounce(() => {
       getMoviesData();
@@ -103,7 +108,9 @@ export default function MovieApp() {
     {
       key: "rated",
       label: "Rated",
-      children: <RatedTab sessionId={sessionId} setGenresList={setGenresList}/>,
+      children: (
+        <RatedTab sessionId={sessionId} />
+      ),
     },
   ];
 

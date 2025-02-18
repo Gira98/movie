@@ -5,7 +5,7 @@ import MovieService from "../../services/movie-service";
 
 const res = new MovieService();
 
-export default function RatedTab({ sessionId, setGenresList }) {
+export default function RatedTab({ sessionId }) {
   const [ratedMovies, setRatedMovies] = useState([]);
   const [totalPagesRated, setTotalPagesRated] = useState(1);
   const [page, setPage] = useState(1);
@@ -18,13 +18,13 @@ export default function RatedTab({ sessionId, setGenresList }) {
         setLoading(true);
         setError(null);
 
-        const genres = await res.getGenres();
-        setGenresList(genres);
+        // const genres = await res.getGenres();
+        // setGenresList(genres);
 
         const rated = await res.getRatedMovies(sessionId, page);
 
         setRatedMovies(rated.results);
-        setTotalPagesRated(rated.total_pages);
+        setTotalPagesRated(rated.total_results);
       } catch (err) {
         setError(<Alert message={err.message} type="error" />);
       } finally {
@@ -48,14 +48,18 @@ export default function RatedTab({ sessionId, setGenresList }) {
   const onPaginationChange = (page) => {
     setPage(page);
   };
+  
+  const updatedProps = {
+    sessionId,
+    loading,
+    activeTab: 'rated'
+  }
 
   const content = (
     <>
       <MovieList
         info={ratedMovies}
-        sessionId={sessionId}
-        loading={loading}
-        activeTab="rated"
+        updatedProps={updatedProps}
       />
       <Flex justify="center">
         <Pagination

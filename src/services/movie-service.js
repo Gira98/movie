@@ -39,30 +39,31 @@ export default class MovieService {
       `/search/movie?api_key=${this.#apiKey}&language=en-US&query=${query}&page=${page}`
     );
 
-    let ratedMovies = { results: [] };
+    // let ratedMovies = { results: [] };
 
-    try {
-      if (sessionId) {
-        ratedMovies = await this.getRatedMovies(sessionId);
-      }
-    } catch (err) {
-      console.log("No rated movies found:", err);
-      return movies;
-    }
+    // try {
+    //   if (sessionId) {
+    //     ratedMovies = await this.getRatedMovies(sessionId);
+    //   }
+    // } catch (err) {
+    //   console.log("No rated movies found:", err);
+    //   return movies;
+    // }
 
-    const moviesPlusRating = movies.results.map((movie) => {
-      const ratedMovie = ratedMovies.results.find((mov) => mov.id === movie.id);
+    // const moviesPlusRating = movies.results.map((movie) => {
+    //   const ratedMovie = ratedMovies.results.find((mov) => mov.id === movie.id);
 
-      if (ratedMovie) {
-        movie.rating = ratedMovie.rating;
+    //   if (ratedMovie) {
+    //     movie.rating = ratedMovie.rating;
 
-        return movie;
-      } else {
-        return movie;
-      }
-    });
+    //     return movie;
+    //   } else {
+    //     return movie;
+    //   }
+    // });
 
-    movies.results = moviesPlusRating;
+    // movies.results = moviesPlusRating;
+    
     return movies;
   }
 

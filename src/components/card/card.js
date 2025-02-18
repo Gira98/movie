@@ -7,14 +7,16 @@ import { format } from "date-fns";
 import MovieService from "../../services/movie-service";
 import picNotAvailable from "/Users/angirabartunova/Desktop/movie-app/src/components/card/not-available.png";
 
-export default function Card({ info, loading, sessionId, activeTab }) {
+export default function Card({ info, updatedProps }) {
   if (!info) {
     return null;
   }
 
+  const { loading } = updatedProps;
+
   const spinner = loading ? <Spinner /> : null;
   const content = !loading ? (
-    <MovieView info={info} sessionId={sessionId} activeTab={activeTab} />
+    <MovieView info={info} updatedProps={updatedProps} />
   ) : null;
 
   return (
@@ -25,7 +27,7 @@ export default function Card({ info, loading, sessionId, activeTab }) {
   );
 }
 
-const MovieView = ({ info, sessionId, activeTab }) => {
+const MovieView = ({ info, updatedProps }) => {
   const {
     title,
     id,
@@ -36,6 +38,8 @@ const MovieView = ({ info, sessionId, activeTab }) => {
     rating,
     vote_average: voteAverage,
   } = info;
+
+  const { sessionId, activeTab, ratingSearch, setRatingSearch } = updatedProps;
 
   const imgBase = "https://image.tmdb.org/t/p/w500";
 
@@ -75,7 +79,15 @@ const MovieView = ({ info, sessionId, activeTab }) => {
 
   const onChange = (value) => {
     onRatingChange(id, value);
+    setRatingSearch((prevState) => {
+      return {
+        ...prevState,
+        [id]: value,
+      };
+    });
   };
+  
+console.log(ratingSearch)
 
   let isRatingDisabled;
 
@@ -114,7 +126,7 @@ const MovieView = ({ info, sessionId, activeTab }) => {
         <article>{cutText(overview, 20)}</article>
         <Rate
           allowHalf
-          defaultValue={rating}
+          defaultValue={rating || ratingSearch[id]}
           count={10}
           className="stars"
           disabled={isRatingDisabled}
