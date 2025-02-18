@@ -34,36 +34,11 @@ export default class MovieService {
     }
   }
 
-  async getMovies(query = "dogville", page = 1, sessionId) {
+  async getMovies(query = "dogville", page = 1) {
     const movies = await this.getResource(
       `/search/movie?api_key=${this.#apiKey}&language=en-US&query=${query}&page=${page}`
     );
 
-    // let ratedMovies = { results: [] };
-
-    // try {
-    //   if (sessionId) {
-    //     ratedMovies = await this.getRatedMovies(sessionId);
-    //   }
-    // } catch (err) {
-    //   console.log("No rated movies found:", err);
-    //   return movies;
-    // }
-
-    // const moviesPlusRating = movies.results.map((movie) => {
-    //   const ratedMovie = ratedMovies.results.find((mov) => mov.id === movie.id);
-
-    //   if (ratedMovie) {
-    //     movie.rating = ratedMovie.rating;
-
-    //     return movie;
-    //   } else {
-    //     return movie;
-    //   }
-    // });
-
-    // movies.results = moviesPlusRating;
-    
     return movies;
   }
 

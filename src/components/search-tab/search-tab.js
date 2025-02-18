@@ -2,15 +2,18 @@ import MovieList from "../movie-list/movie-list";
 
 import { Flex, Pagination, Input } from "antd";
 
-export default function SearchTab({ setSearchQuery, onPaginationChange, propsSearchTab, info }) {
-
-  const {error, totalPages, page, ...rest} = propsSearchTab
-  const updatedProps = { ...rest, activeTab: 'search' }; 
+export default function SearchTab({
+  setSearchQuery,
+  onPaginationChange,
+  propsSearchTab,
+  info,
+}) {
+  const { error, totalPages, page, ...rest } = propsSearchTab;
+  const updatedProps = { ...rest, activeTab: "search" };
 
   const searchMovie = (e) => {
     setSearchQuery(e.target.value);
   };
-
 
   const content = (
     <>

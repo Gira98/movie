@@ -86,8 +86,8 @@ const MovieView = ({ info, updatedProps }) => {
       };
     });
   };
-  
-console.log(ratingSearch)
+
+  console.log(ratingSearch);
 
   let isRatingDisabled;
 

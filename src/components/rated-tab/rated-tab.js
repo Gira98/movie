@@ -18,9 +18,6 @@ export default function RatedTab({ sessionId }) {
         setLoading(true);
         setError(null);
 
-        // const genres = await res.getGenres();
-        // setGenresList(genres);
-
         const rated = await res.getRatedMovies(sessionId, page);
 
         setRatedMovies(rated.results);
@@ -48,19 +45,16 @@ export default function RatedTab({ sessionId }) {
   const onPaginationChange = (page) => {
     setPage(page);
   };
-  
+
   const updatedProps = {
     sessionId,
     loading,
-    activeTab: 'rated'
-  }
+    activeTab: "rated",
+  };
 
   const content = (
     <>
-      <MovieList
-        info={ratedMovies}
-        updatedProps={updatedProps}
-      />
+      <MovieList info={ratedMovies} updatedProps={updatedProps} />
       <Flex justify="center">
         <Pagination
           total={totalPagesRated}

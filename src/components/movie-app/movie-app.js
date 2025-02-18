@@ -22,7 +22,7 @@ export default function MovieApp() {
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
   const [sessionId, setSessionId] = useState(null);
-  const [ratingSearch, setRatingSearch] = useState({})
+  const [ratingSearch, setRatingSearch] = useState({});
 
   const propsSearchTab = {
     error,
@@ -31,7 +31,7 @@ export default function MovieApp() {
     sessionId,
     page,
     ratingSearch,
-    setRatingSearch
+    setRatingSearch,
   };
 
   const getMoviesData = async () => {
@@ -108,9 +108,7 @@ export default function MovieApp() {
     {
       key: "rated",
       label: "Rated",
-      children: (
-        <RatedTab sessionId={sessionId} />
-      ),
+      children: <RatedTab sessionId={sessionId} />,
     },
   ];
 
